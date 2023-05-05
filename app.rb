@@ -15,7 +15,7 @@ class Application < Sinatra::Base
   end
 
   get '/' do
-    return "hello from caroline's albums"
+    return "hello from caroline's music library website :-D"
   end
 
   # ------ ALBUMs routes --------------------
