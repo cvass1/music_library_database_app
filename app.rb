@@ -48,7 +48,7 @@ class Application < Sinatra::Base
   post '/albums' do
     if invalid_album_request_params? then
       status 400
-      return ''
+      return 'Invalid parameters'
     end
 
 
@@ -76,9 +76,9 @@ class Application < Sinatra::Base
   end
 
   def invalid_album_request_params?
-    params[:title] == nil || 
-      params[:release_year] == nil || 
-      params[:artist_id] == nil
+    params[:title] == nil ||  params[:title].match?(/[^a-zA-Z0-9 ]/) ||  
+      params[:release_year] == nil || params[:release_year].match?(/[^a-zA-Z0-9 ]/) ||
+      params[:artist_id] == nil || params[:artist_id].match?(/[^a-zA-Z0-9 ]/) 
   end
 
   # ------ ARTIST routes --------------------
@@ -102,7 +102,7 @@ class Application < Sinatra::Base
   post '/artists' do
     if invalid_artist_request_params? then
       status 400
-      return ''
+      return 'Invalid parameters'
     end
 
     repo = ArtistRepository.new
@@ -116,8 +116,8 @@ class Application < Sinatra::Base
   end
 
   def invalid_artist_request_params?
-    params[:name] == nil || 
-      params[:genre] == nil
+    params[:name] == nil || params[:name].match?(/[^a-zA-Z0-9 ]/) ||
+      params[:genre] == nil || params[:genre].match?(/[^a-zA-Z0-9 ]/)
   end
 
 
