@@ -1,0 +1,15 @@
+<html>
+  <head></head>
+  <body>
+    <h1>Albums</h1>
+
+    <div>
+      <% @result_set.each do |album| %>
+      <p>
+        <a href="/albums/<%=album.id%>"><%= album.title %></a>
+      </p>
+      <% end %>
+    </div>
+
+  </body>
+</html>
