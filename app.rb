@@ -15,7 +15,7 @@ class Application < Sinatra::Base
   end
 
   get '/' do
-    return "hello from caroline's music library website :-D"
+    return erb(:index)
   end
 
   # ------ ALBUMs routes --------------------
